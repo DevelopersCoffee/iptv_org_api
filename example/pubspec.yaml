@@ -1,0 +1,13 @@
+name: iptv_org_api_example
+description: Standalone example for iptv_org_api package.
+publish_to: none
+
+environment:
+  sdk: ^3.12.0
+
+dependencies:
+  iptv_org_api:
+    path: ../
+
+dev_dependencies:
+  lints: ^6.0.0

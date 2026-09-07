@@ -1,0 +1,27 @@
+name: iptv_org_api
+description: Fully typed, cached, isolate-parsed relational Dart client for the public iptv-org global dataset.
+version: 1.0.0
+homepage: https://github.com/DevelopersCoffee/iptv_org_api
+repository: https://github.com/DevelopersCoffee/iptv_org_api
+issue_tracker: https://github.com/DevelopersCoffee/iptv_org_api/issues
+
+topics:
+  - iptv
+  - streaming
+  - epg
+  - tv
+  - api-client
+
+environment:
+  sdk: ^3.12.0
+
+dependencies:
+  meta: ^1.12.0
+  run_off_main:
+    git:
+      url: https://github.com/DevelopersCoffee/run_off_main.git
+      ref: main
+
+dev_dependencies:
+  lints: ^6.0.0
+  test: ^1.25.0
