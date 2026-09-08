@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'dart:typed_data';
 
-import 'package:iptv_org_api/platform_iptv_org_api.dart';
+import 'package:iptv_org_api/iptv_org_api.dart';
 import 'package:test/test.dart';
 
 void main() {
@@ -157,4 +157,7 @@ final class _FakeTransport implements IptvOrgTransport {
     requests.add(request);
     return handler(request);
   }
+
+  @override
+  void close() {}
 }

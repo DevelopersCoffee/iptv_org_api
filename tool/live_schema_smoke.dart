@@ -1,4 +1,4 @@
-import 'package:iptv_org_api/platform_iptv_org_api.dart';
+import 'package:iptv_org_api/iptv_org_api.dart';
 
 Future<void> main() async {
   final snapshot = await IptvOrgApiClient(

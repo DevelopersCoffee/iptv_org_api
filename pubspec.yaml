@@ -4,6 +4,7 @@ version: 1.0.0
 homepage: https://github.com/DevelopersCoffee/iptv_org_api
 repository: https://github.com/DevelopersCoffee/iptv_org_api
 issue_tracker: https://github.com/DevelopersCoffee/iptv_org_api/issues
+documentation: https://github.com/DevelopersCoffee/iptv_org_api#readme
 
 topics:
   - iptv
@@ -11,6 +12,13 @@ topics:
   - epg
   - tv
   - api-client
+
+platforms:
+  android:
+  ios:
+  linux:
+  macos:
+  windows:
 
 environment:
   sdk: ^3.12.0

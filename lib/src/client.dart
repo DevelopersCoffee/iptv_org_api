@@ -10,14 +10,18 @@ import 'transport.dart';
 const _offMainDecodeThresholdBytes = 50 * 1024;
 final _defaultBaseUri = Uri.parse('https://iptv-org.github.io/api/');
 
+/// Strongly typed client for fetching and caching the `iptv-org` global dataset.
 final class IptvOrgApiClient {
+  /// Creates a new [IptvOrgApiClient].
   IptvOrgApiClient({
-    required this.transport,
-    required this.cache,
+    IptvOrgTransport? transport,
+    IptvOrgCache? cache,
     Uri? baseUri,
     this.cacheTtl = const Duration(hours: 24),
     DateTime Function()? now,
-  }) : baseUri = baseUri ?? _defaultBaseUri,
+  }) : transport = transport ?? IoIptvOrgTransport(),
+       cache = cache ?? MemoryIptvOrgCache(),
+       baseUri = baseUri ?? _defaultBaseUri,
        _now = now ?? DateTime.now {
     if (!this.baseUri.hasScheme || !this.baseUri.path.endsWith('/')) {
       throw ArgumentError.value(
@@ -28,33 +32,85 @@ final class IptvOrgApiClient {
     }
   }
 
+  /// Factory constructor for IO environment with custom timeout.
+  factory IptvOrgApiClient.io({
+    Duration timeout = const Duration(seconds: 30),
+    IptvOrgCache? cache,
+    Uri? baseUri,
+    Duration cacheTtl = const Duration(hours: 24),
+  }) {
+    return IptvOrgApiClient(
+      transport: IoIptvOrgTransport(timeout: timeout),
+      cache: cache,
+      baseUri: baseUri,
+      cacheTtl: cacheTtl,
+    );
+  }
+
+  /// Network transport instance.
   final IptvOrgTransport transport;
+
+  /// Cache storage instance.
   final IptvOrgCache cache;
+
+  /// Base API endpoint URI.
   final Uri baseUri;
+
+  /// Time-to-live duration for cached entries.
   final Duration cacheTtl;
+
   final DateTime Function() _now;
 
+  /// Closes underlying transport resources.
+  void close() => transport.close();
+
+  /// Fetches global channels.
   Future<List<IptvOrgChannel>> fetchChannels() =>
       _fetch(IptvOrgEndpoint.channels);
+
+  /// Fetches channel feeds.
   Future<List<IptvOrgFeed>> fetchFeeds() => _fetch(IptvOrgEndpoint.feeds);
+
+  /// Fetches channel logos.
   Future<List<IptvOrgLogo>> fetchLogos() => _fetch(IptvOrgEndpoint.logos);
+
+  /// Fetches live stream endpoints.
   Future<List<IptvOrgStream>> fetchStreams() => _fetch(IptvOrgEndpoint.streams);
+
+  /// Fetches EPG guide references.
   Future<List<IptvOrgGuide>> fetchGuides() => _fetch(IptvOrgEndpoint.guides);
+
+  /// Fetches channel categories.
   Future<List<IptvOrgCategory>> fetchCategories() =>
       _fetch(IptvOrgEndpoint.categories);
+
+  /// Fetches catalog languages.
   Future<List<IptvOrgLanguage>> fetchLanguages() =>
       _fetch(IptvOrgEndpoint.languages);
+
+  /// Fetches catalog countries.
   Future<List<IptvOrgCountry>> fetchCountries() =>
       _fetch(IptvOrgEndpoint.countries);
+
+  /// Fetches country subdivisions.
   Future<List<IptvOrgSubdivision>> fetchSubdivisions() =>
       _fetch(IptvOrgEndpoint.subdivisions);
+
+  /// Fetches catalog cities.
   Future<List<IptvOrgCity>> fetchCities() => _fetch(IptvOrgEndpoint.cities);
+
+  /// Fetches geographical regions.
   Future<List<IptvOrgRegion>> fetchRegions() => _fetch(IptvOrgEndpoint.regions);
+
+  /// Fetches timezones.
   Future<List<IptvOrgTimezone>> fetchTimezones() =>
       _fetch(IptvOrgEndpoint.timezones);
+
+  /// Fetches blocklist entries.
   Future<List<IptvOrgBlocklistEntry>> fetchBlocklist() =>
       _fetch(IptvOrgEndpoint.blocklist);
 
+  /// Fetches a complete relational snapshot of all datasets concurrently.
   Future<IptvOrgSnapshot> fetchSnapshot() async {
     final channels = fetchChannels();
     final feeds = fetchFeeds();
