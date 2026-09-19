@@ -13,6 +13,16 @@ Part of the **[DevelopersCoffee](https://developerscoffee.com)** open-source eco
 
 ---
 
+## ✨ AI Agent Skill Prompt (`skill.sh` compatible)
+
+If you are using AI coding assistants (Antigravity, Cursor, Claude, Copilot, etc.), copy and execute the prompt below:
+
+```bash
+Run `npx skills use "https://github.com/flutter/agent-plugins" --skill "flutter-apply-architecture-best-practices"`
+```
+
+---
+
 ## 🚀 Key Features
 
 * ⚡ **Memory-Efficient Stream Ingestion**: Stream-reads massive M3U/M3U8 playlists (100k+ channels) under 15MB RAM.
@@ -80,6 +90,13 @@ final xtream = await sdk.connectXtream(
 final streams = await xtream.getLiveStreams();
 print('Active Xtream Streams: ${streams.length}');
 ```
+
+---
+
+## Custom Feature Requests, Contributions & Technical Support
+
+- 🐛 **Bug Reports & Feature Requests**: Open an issue or pull request on [GitHub](https://github.com/DevelopersCoffee/iptv_org_api/issues).
+- 💼 **Enterprise Consulting & Custom Development**: Contact us at **[developerscoffee.com](https://developerscoffee.com)**.
 
 ---
 
