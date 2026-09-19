@@ -1,6 +1,6 @@
 name: iptv_org_api
-description: Fully typed, cached, isolate-parsed relational Dart client for the public iptv-org global dataset.
-version: 1.0.0
+description: Enterprise-Grade IPTV Core SDK for Flutter & Dart. Multi-source M3U/M3U8 parsing, XMLTV EPG sync, Xtream Codes, stream health validation, local persistence & player abstractions.
+version: 2.0.0
 homepage: https://github.com/DevelopersCoffee/iptv_org_api
 repository: https://github.com/DevelopersCoffee/iptv_org_api
 issue_tracker: https://github.com/DevelopersCoffee/iptv_org_api/issues

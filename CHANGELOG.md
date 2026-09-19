@@ -1,3 +1,14 @@
+## 2.0.0
+
+* **Enterprise IPTV SDK Transition**: Expanded scope from a passive REST client into an Enterprise-Grade IPTV Core SDK across iOS, Android, macOS, Windows, Linux, and Web.
+* **Unified SDK Facade (`IptvClient`)**: Centralized entrypoint coordinating ingestion, health checking, EPG synchronization, persistence, and video player controls.
+* **Memory-Efficient Stream Ingestion**: Introduced `MemoryEfficientM3uParser` using asynchronous Dart streams to process 100,000+ streams under 15MB RAM footprint.
+* **XMLTV EPG Support**: Introduced `XmltvParser` and `EpgProgram` models for parsing program timelines and calculating live broadcast progress.
+* **Xtream Codes Compatibility**: Added `XtreamProvider` supporting authentication, live categories, streams, VOD, and direct URL generation (`/player_api.php`).
+* **Real-Time Stream Health Engine**: Introduced `IptvHealthChecker` for concurrent HEAD/range network probing, latency timing, MIME verification, and status monitoring.
+* **Local Persistence Layer**: Added `IptvLocalStorage` and `MemoryLocalStorage` with indexed search, category filtering, favorites, and live EPG program lookup.
+* **Universal Player Abstraction**: Introduced `IptvPlayerController` and `IptvVideoSurface` for cross-platform video surface rendering.
+
 ## 1.0.0
 
 * Initial release of `iptv_org_api`.
