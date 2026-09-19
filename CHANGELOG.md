@@ -1,3 +1,9 @@
+## 2.1.0
+
+* **Stalker Portal Middleware Support**: Introduced `StalkerProvider` and `connectStalker()` for MAC-authenticated Stalker middleware servers (`/stalker_portal/server/load.php`).
+* **Preloaded Dataset Asset Generator**: Added `tool/generate_preloaded_asset.dart` to bundle static datasets into indexed offline JSON assets for sub-millisecond cold boot speeds in mobile & smart TV apps.
+* **Expanded Example Suite**: Enhanced `example/bin/example.dart` showcasing multi-source M3U ingestion, EPG schedule lookup, health checks, and player state streams.
+
 ## 2.0.0
 
 * **Enterprise IPTV SDK Transition**: Expanded scope from a passive REST client into an Enterprise-Grade IPTV Core SDK across iOS, Android, macOS, Windows, Linux, and Web.

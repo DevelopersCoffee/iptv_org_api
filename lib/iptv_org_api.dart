@@ -14,6 +14,7 @@ export 'src/core/config.dart';
 // Data Models
 export 'src/data/models/channel.dart';
 export 'src/data/models/epg.dart';
+export 'src/data/models/stalker.dart';
 export 'src/data/models/stream_status.dart';
 export 'src/data/models/xtream.dart';
 
@@ -21,6 +22,7 @@ export 'src/data/models/xtream.dart';
 export 'src/data/parsers/m3u_parser.dart';
 export 'src/data/parsers/xmltv_parser.dart';
 export 'src/data/providers/iptv_org_provider.dart';
+export 'src/data/providers/stalker_provider.dart';
 export 'src/data/providers/xtream_provider.dart';
 
 // Database & Storage

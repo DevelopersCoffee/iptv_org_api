@@ -10,6 +10,7 @@ import '../data/parsers/m3u_parser.dart';
 import '../data/parsers/xmltv_parser.dart';
 import '../data/providers/iptv_org_provider.dart';
 import '../data/providers/xtream_provider.dart';
+import '../data/providers/stalker_provider.dart';
 import '../player/controller.dart';
 import '../utils/health_checker.dart';
 
@@ -96,6 +97,23 @@ final class IptvClient {
       username: username,
       password: password,
     );
+    final channels = await provider.getNormalizedChannels();
+    if (config.enableAutoCaching) {
+      await storage.saveChannels(channels);
+    }
+    return provider;
+  }
+
+  /// Connects to a Stalker Portal Middleware server.
+  Future<StalkerProvider> connectStalker({
+    required String portalUrl,
+    required String macAddress,
+  }) async {
+    final provider = StalkerProvider(
+      portalUrl: portalUrl,
+      macAddress: macAddress,
+    );
+    await provider.handshake();
     final channels = await provider.getNormalizedChannels();
     if (config.enableAutoCaching) {
       await storage.saveChannels(channels);
